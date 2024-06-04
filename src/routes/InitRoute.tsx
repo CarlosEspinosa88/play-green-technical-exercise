@@ -1,6 +1,6 @@
-import {Routes, Route} from "react-router-dom"
-import Home from '../pages/Home'
-import Fav from "../pages/Fav"
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home';
+import Fav from '../pages/Fav';
 
 export const InitRoute = () => {
   return (
@@ -8,5 +8,5 @@ export const InitRoute = () => {
       <Route path="/" element={<Home />} />
       <Route path="/fav" element={<Fav />} />
     </Routes>
-  )
-}
+  );
+};

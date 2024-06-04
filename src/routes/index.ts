@@ -1,3 +1,3 @@
-import {InitRoute} from './InitRoute'
+import { InitRoute } from './InitRoute';
 
-export {InitRoute}
+export { InitRoute };

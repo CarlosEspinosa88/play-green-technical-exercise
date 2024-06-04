@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react"
-import { getAllSportsData } from "../helpers/api"
-import type { Sport } from '../interfaces'
-
+import { useEffect, useState } from 'react';
+import { getAllSportsData } from '../helpers/api';
+import type { Sport } from '../interfaces';
 
 const Home = () => {
-  const [sports, setSports] = useState<Sport[]>([])
+  const [sports, setSports] = useState<Sport[]>([]);
 
   useEffect(() => {
     async function handleAllSports() {
-      const getData = await getAllSportsData()
-      setSports(getData.sports)
+      const getData = await getAllSportsData();
+      setSports(getData.sports);
     }
 
-    handleAllSports()
-  }, [])
+    handleAllSports();
+  }, []);
 
   return (
     <div>
@@ -23,14 +22,14 @@ const Home = () => {
           <div key={sport.idSport}>
             <h3>{sport.strSport}</h3>
             <p>{sport.strSportDescription}</p>
-            <img src={sport.strSportIconGreen} />
-            <img src={sport.strSportThumb} />
-            <img src={sport.strSportThumbBW} />
+            <img alt={sport.strSportIconGreen} src={sport.strSportIconGreen} />
+            <img alt={sport.strSportThumb} src={sport.strSportThumb} />
+            <img alt={sport.strSportThumbBW} src={sport.strSportThumbBW} />
           </div>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

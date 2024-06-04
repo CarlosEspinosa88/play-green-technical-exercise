@@ -5,4 +5,4 @@ export type Sport = {
   strSportIconGreen?: string;
   strSportThumb?: string;
   strSportThumbBW?: string;
-}
+};
