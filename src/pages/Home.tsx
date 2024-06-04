@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
+import { styled } from 'styled-components';
 import { getAllSportsData } from '../helpers/api';
-import type { Sport } from '../interfaces';
+import type { Sport, Mode } from '../interfaces';
 
-const Home = () => {
+const StyledHome = styled.div<{ $small?: boolean }>`
+  ${({ theme }) => `
+    background-color: ${theme.otherColors.primary};
+    color: ${theme.colors.header};
+  `};
+  padding: ${(props) => (props.$small ? '100px' : '10px')};
+`;
+
+const Home = ({ mode, setMode }: Mode) => {
   const [sports, setSports] = useState<Sport[]>([]);
+  function handleMode() {
+    mode === 'light' ? setMode('dark') : setMode('light');
+  }
 
   useEffect(() => {
     async function handleAllSports() {
@@ -15,8 +27,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      Home View
+    <StyledHome $small>
+      <h1>Home View</h1>
+      <button onClick={handleMode}>SET MODE</button>
       <div>
         {sports?.map((sport) => (
           <div key={sport.idSport}>
@@ -28,7 +41,7 @@ const Home = () => {
           </div>
         ))}
       </div>
-    </div>
+    </StyledHome>
   );
 };
 
