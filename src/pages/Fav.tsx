@@ -1,7 +1,7 @@
 const Fav = () => {
   return (
     <div>
-      Vista de Favoritos
+      Fav View
     </div>
   )
 }
