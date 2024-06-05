@@ -1,9 +1,5 @@
 const Fav = () => {
-  return (
-    <div>
-      Fav View
-    </div>
-  )
-}
+  return <div>Fav View</div>;
+};
 
-export default Fav
+export default Fav;
