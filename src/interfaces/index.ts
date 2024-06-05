@@ -1,3 +1,4 @@
 import type { Sport } from './sportInterfaces';
 import type { Mode } from './modeSchema';
-export type { Sport, Mode };
+import type { UserAuth } from './userInterface';
+export type { Sport, Mode, UserAuth };
