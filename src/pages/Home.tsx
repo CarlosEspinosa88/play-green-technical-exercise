@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { getAllSportsData, login, logout, signup, userStatus } from '../helpers';
+import { useNavigate } from 'react-router-dom';
+import { getAllSportsData } from '../helpers';
+import { useAuth } from '../hooks/useAuth';
 import type { Sport, Mode } from '../interfaces';
 
 const StyledHome = styled.div<{ $small?: boolean }>`
@@ -13,18 +15,19 @@ const StyledHome = styled.div<{ $small?: boolean }>`
 
 const Home = ({ mode, setMode }: Mode) => {
   const [sports, setSports] = useState<Sport[]>([]);
-  const [isLogged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
+  const { isLogged, loginUser, logoutUser } = useAuth();
 
   function handleMode() {
     mode === 'light' ? setMode('dark') : setMode('light');
   }
 
   function handleLogin() {
-    login(isLogged, setIsLogged);
+    loginUser();
   }
 
   function handleLogout() {
-    logout(isLogged, setIsLogged);
+    logoutUser();
   }
 
   useEffect(() => {
@@ -37,8 +40,10 @@ const Home = ({ mode, setMode }: Mode) => {
   }, []);
 
   useEffect(() => {
-    userStatus(setIsLogged);
-  }, []);
+    if (!isLogged) {
+      return navigate('/login');
+    }
+  }, [isLogged, navigate]);
 
   return (
     <StyledHome $small>
