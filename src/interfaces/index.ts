@@ -1,2 +1,3 @@
 import type { Sport } from './sportInterfaces';
-export type { Sport };
+import type { Mode } from './modeSchema';
+export type { Sport, Mode };
