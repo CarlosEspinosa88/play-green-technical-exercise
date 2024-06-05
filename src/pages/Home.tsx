@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { getAllSportsData } from '../helpers/api';
+import { getAllSportsData, login, logout, signup, userStatus } from '../helpers';
 import type { Sport, Mode } from '../interfaces';
 
 const StyledHome = styled.div<{ $small?: boolean }>`
@@ -13,8 +13,18 @@ const StyledHome = styled.div<{ $small?: boolean }>`
 
 const Home = ({ mode, setMode }: Mode) => {
   const [sports, setSports] = useState<Sport[]>([]);
+  const [isLogged, setIsLogged] = useState(false);
+
   function handleMode() {
     mode === 'light' ? setMode('dark') : setMode('light');
+  }
+
+  function handleLogin() {
+    login(isLogged, setIsLogged);
+  }
+
+  function handleLogout() {
+    logout(isLogged, setIsLogged);
   }
 
   useEffect(() => {
@@ -26,10 +36,17 @@ const Home = ({ mode, setMode }: Mode) => {
     handleAllSports();
   }, []);
 
+  useEffect(() => {
+    userStatus(setIsLogged);
+  }, []);
+
   return (
     <StyledHome $small>
       <h1>Home View</h1>
-      <button onClick={handleMode}>SET MODE</button>
+      <p>{isLogged ? 'User logged' : 'User not logged'}</p>
+      <button onClick={handleLogin}>LOGIN</button>
+      <button onClick={handleLogout}>LOGOUT</button>
+      <button onClick={handleMode}>MODE</button>
       <div>
         {sports?.map((sport) => (
           <div key={sport.idSport}>
