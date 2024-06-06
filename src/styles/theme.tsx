@@ -1,4 +1,5 @@
 const lightGrey: string = '#FEFEFE';
+const white: string = '#FFFFFF';
 
 const lightTheme = {
   header: '#161617',
@@ -15,7 +16,7 @@ const darktheme = {
   text: lightGrey,
   label: lightGrey,
   background: '#181828',
-  remove: '#FFFFFF',
+  remove: white,
 };
 
 const defaultStyles = {
@@ -38,6 +39,7 @@ const defaultStyles = {
     iconBlue: '#236BFE',
     shadowBlue: '#063BA8',
     blueContainer: '#2269FBCC',
+    white: white,
   },
 };
 
