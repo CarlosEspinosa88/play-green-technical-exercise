@@ -8,7 +8,7 @@ export const StyledLoginContainer = styled.div`
 
 export const StyledFormContainer = styled.div`
   > * + * {
-    margin: 1rem 0 0 0;
+    margin: 0.8rem 0 0 0;
   }
 `;
 
@@ -29,12 +29,27 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledHeaderThree = styled.p`
+  color: ${({ theme }) => theme.colors.text};
   text-align: center;
   margin: 0 0 1rem 0;
   font-family: 'Epilogue', sans-serif;
 `;
 
 export const StyledHeaderOne = styled.h1`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 2.6rem;
+  font-weight: 600;
   text-align: center;
   margin: 0 0 1rem 0;
+`;
+
+export const StyledErrorContainer = styled.div`
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: 0.2rem 0 0 0;
+  color: ${({ theme }) => theme.otherColors.error};
+`;
+
+export const StyledErrorMessage = styled.span`
+  margin-left: 0.7rem;
 `;

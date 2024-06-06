@@ -7,6 +7,5 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
     margin: 0;
-    font-display: block;
   }
 `;
