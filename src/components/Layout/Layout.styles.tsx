@@ -21,7 +21,7 @@ export const MainContainer = styled.div`
   justify-content: center;
 
   @media (min-width: ${breakPoints.mobile}) {
-    height: 75vh;
+    height: 85vh;
     width: 300px;
   }
 `;

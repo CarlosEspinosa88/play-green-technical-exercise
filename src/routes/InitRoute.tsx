@@ -7,9 +7,9 @@ import Login from '../pages/Login';
 export const InitRoute = ({ colorScheme, setColorScheme }: ColorScheme) => {
   return (
     <Routes>
-      <Route path="/" element={<Home colorScheme={colorScheme} setColorScheme={setColorScheme} />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/home" element={<Home colorScheme={colorScheme} setColorScheme={setColorScheme} />} />
       <Route path="/fav" element={<Fav />} />
-      <Route path="/login" element={<Login />} />
     </Routes>
   );
 };
