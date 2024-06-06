@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import { Mode } from '../interfaces';
+import type { ColorScheme } from '../interfaces';
 import Home from '../pages/Home';
 import Fav from '../pages/Fav';
 import Login from '../pages/Login';
 
-export const InitRoute = ({ mode, setMode }: Mode) => {
+export const InitRoute = ({ colorScheme, setColorScheme }: ColorScheme) => {
   return (
     <Routes>
-      <Route path="/" element={<Home mode={mode} setMode={setMode} />} />
+      <Route path="/" element={<Home colorScheme={colorScheme} setColorScheme={setColorScheme} />} />
       <Route path="/fav" element={<Fav />} />
       <Route path="/login" element={<Login />} />
     </Routes>

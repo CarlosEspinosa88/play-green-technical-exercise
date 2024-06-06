@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import { getAllSportsData } from '../helpers';
 import { useAuth } from '../hooks/useAuth';
-import type { Sport, Mode } from '../interfaces';
+import type { Sport, ColorScheme } from '../interfaces';
 
 const StyledHome = styled.div<{ $small?: boolean }>`
   ${({ theme }) => `
@@ -13,21 +12,20 @@ const StyledHome = styled.div<{ $small?: boolean }>`
   padding: ${(props) => (props.$small ? '100px' : '10px')};
 `;
 
-const Home = ({ mode, setMode }: Mode) => {
+const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
   const [sports, setSports] = useState<Sport[]>([]);
-  const navigate = useNavigate();
-  const { isLogged, loginUser, logoutUser } = useAuth();
+  const auth = useAuth();
 
   function handleMode() {
-    mode === 'light' ? setMode('dark') : setMode('light');
+    colorScheme === 'light' ? setColorScheme('dark') : setColorScheme('light');
   }
 
   function handleLogin() {
-    loginUser();
+    auth?.loginUser();
   }
 
   function handleLogout() {
-    logoutUser();
+    auth?.logoutUser();
   }
 
   useEffect(() => {
@@ -39,16 +37,10 @@ const Home = ({ mode, setMode }: Mode) => {
     handleAllSports();
   }, []);
 
-  useEffect(() => {
-    if (!isLogged) {
-      return navigate('/login');
-    }
-  }, [isLogged, navigate]);
-
   return (
     <StyledHome $small>
       <h1>Home View</h1>
-      <p>{isLogged ? 'User logged' : 'User not logged'}</p>
+      <p>{auth?.isLogged ? 'User logged' : 'User not logged'}</p>
       <button onClick={handleLogin}>LOGIN</button>
       <button onClick={handleLogout}>LOGOUT</button>
       <button onClick={handleMode}>MODE</button>
