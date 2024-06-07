@@ -1,18 +1,21 @@
 import { auth } from '../config/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { userStatus } from './status';
+import { FirebaseAuthType } from '../interfaces';
 
-export const signup = (setIsLogged) => {
-  createUserWithEmailAndPassword(auth, 'test_again@test.com', '55559999')
+export const signup = ({ isLogged, setIsLogged, setIsLoggedError, email, password }: FirebaseAuthType) => {
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
 
-      if (user) {
+      if (user && !isLogged) {
         console.log('User created successfully', user.uid);
         userStatus(setIsLogged);
+        setIsLoggedError('');
       }
     })
     .catch((error) => {
-      console.log(`Error: ${error.message}, code ${error.code}`);
+      console.log(`${error.message}, code: ${error.code}`);
+      setIsLoggedError(error.message);
     });
 };
