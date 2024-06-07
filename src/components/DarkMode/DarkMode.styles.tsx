@@ -5,6 +5,7 @@ export const StyledDarkModeContainer = styled.div`
   position: absolute;
   margin-left: 10px;
   top: 65px;
+  z-index: 1;
 `;
 
 export const StyledDarkModeButton = styled.button`
