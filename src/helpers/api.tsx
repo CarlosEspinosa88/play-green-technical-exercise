@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getAllSportsData = async () => {
-  const URL = 'https://www.thesportsdb.com/api/v1/json/3/all_sports.php';
+  const URL = 'https://dff6kz4nmb.execute-api.us-east-1.amazonaws.com/development/test-front'
   const res = await axios.get(URL);
 
   if (res.status !== 200) {
