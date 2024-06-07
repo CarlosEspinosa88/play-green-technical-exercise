@@ -32,7 +32,14 @@ export const StyledHeaderThree = styled.p`
   color: ${({ theme }) => theme.colors.text};
   text-align: center;
   margin: 0 0 1rem 0;
+  line-height: 1.4;
   font-family: 'Epilogue', sans-serif;
+`;
+
+export const StyledText = styled.p`
+  font-weight: 200;
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const StyledHeaderOne = styled.h1`
@@ -44,12 +51,16 @@ export const StyledHeaderOne = styled.h1`
 `;
 
 export const StyledErrorContainer = styled.div`
-  font-size: 0.7rem;
-  font-weight: 600;
-  margin: 0.2rem 0 0 0;
-  color: ${({ theme }) => theme.otherColors.error};
+  margin: 0.2rem 0 0.7rem 0;
+`;
+
+export const StyledCredentialContainer = styled.div`
+  margin: 0 0 0.5rem 0;
+  text-align: center;
 `;
 
 export const StyledErrorMessage = styled.span`
-  margin-left: 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.otherColors.error};
 `;

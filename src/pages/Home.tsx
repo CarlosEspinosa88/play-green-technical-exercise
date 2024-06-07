@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { getAllSportsData } from '../helpers';
 import { useAuth } from '../hooks/useAuth';
 import type { Sport, ColorScheme } from '../interfaces';
@@ -13,19 +14,19 @@ const StyledHome = styled.div<{ $small?: boolean }>`
 `;
 
 const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
-  const [sports, setSports] = useState<Sport[]>([]);
   const auth = useAuth();
+  const navigate = useNavigate();
+  const [sports, setSports] = useState<Sport[]>([]);
 
   function handleMode() {
     colorScheme === 'light' ? setColorScheme('dark') : setColorScheme('light');
   }
 
-  function handleLogin() {
-    auth?.loginUser();
-  }
-
   function handleLogout() {
     auth?.logoutUser();
+    setTimeout(() => {
+      navigate('/');
+    }, 100);
   }
 
   useEffect(() => {
@@ -41,7 +42,6 @@ const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
     <StyledHome $small>
       <h1>Home View</h1>
       <p>{auth?.isLogged ? 'User logged' : 'User not logged'}</p>
-      <button onClick={handleLogin}>LOGIN</button>
       <button onClick={handleLogout}>LOGOUT</button>
       <button onClick={handleMode}>MODE</button>
       <div>
