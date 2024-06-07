@@ -13,12 +13,8 @@ export const MainContainer = styled.div`
     background: ${theme.colors.background};
     border-radius: ${theme.borderRadius.large};
   `};
-  padding: 30px;
-  display: flex;
   overflow: hidden;
   overflow-y: scroll;
-  align-items: center;
-  justify-content: center;
 
   @media (min-width: ${breakPoints.mobile}) {
     height: 85vh;

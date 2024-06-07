@@ -16,7 +16,7 @@ const darktheme = {
   subtitle: lightGrey,
   text: lightGrey,
   label: lightGrey,
-  box: 'rgba(255, 255, 255, 0.26)',
+  box: 'rgba(142, 142, 142, 0.2)',
   background: '#181828',
   remove: white,
 };
@@ -43,6 +43,7 @@ const defaultStyles = {
     shadowBlue: '#063BA8',
     blueContainer: '#2269FBCC',
     blueShadowPrimary: 'rgba(26, 92, 225, 0.55)',
+    gray: '#8c8c8c',
     white: white,
   },
 };

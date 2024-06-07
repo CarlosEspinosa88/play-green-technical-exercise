@@ -1,9 +1,16 @@
 import { styled } from 'styled-components';
 
+export const StyledMainContainer = styled.div`
+  height: 75vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const StyledLoginContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
 
 export const StyledFormContainer = styled.div`
