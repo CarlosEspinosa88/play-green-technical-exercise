@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import {
+  StyledMainContainer,
   StyledHeaderOne,
   StyledHeaderThree,
   StyledLoginContainer,
@@ -47,53 +48,55 @@ const Login = () => {
 
   return (
     <Layout>
-      <StyledLoginContainer>
-        <StyledHeaderOne>Welcome</StyledHeaderOne>
-        <StyledHeaderThree>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledHeaderThree>
-        {invalidCredentials && (
-          <StyledCredentialContainer>
-            <StyledErrorMessage>Error authentication or invalid credential</StyledErrorMessage>
-          </StyledCredentialContainer>
-        )}
-        <form onSubmit={formik.handleSubmit}>
-          <StyledFormContainer>
-            <Input
-              label="User"
-              type="email"
-              name="email"
-              id="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Enter your email"
-            />
-            <StyledErrorContainer>
-              {formik.touched.email && formik.errors.email ? (
-                <StyledErrorMessage>{formik.errors.email}</StyledErrorMessage>
-              ) : null}
-            </StyledErrorContainer>
-            <Input
-              label="Password"
-              type="password"
-              name="password"
-              id="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Enter your password"
-            />
-            <StyledErrorContainer>
-              {formik.touched.password && formik.errors.password ? (
-                <StyledErrorMessage>{formik.errors.password}</StyledErrorMessage>
-              ) : null}
-            </StyledErrorContainer>
-            <StyledText>Forgot your password?</StyledText>
-            <div>
-              <Button type="submit" value={invalidCredentials ? 'Sign Up' : 'Login'} />
-            </div>
-          </StyledFormContainer>
-        </form>
-      </StyledLoginContainer>
+      <StyledMainContainer>
+        <StyledLoginContainer>
+          <StyledHeaderOne>Welcome</StyledHeaderOne>
+          <StyledHeaderThree>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledHeaderThree>
+          {invalidCredentials && (
+            <StyledCredentialContainer>
+              <StyledErrorMessage>Error authentication or invalid credential</StyledErrorMessage>
+            </StyledCredentialContainer>
+          )}
+          <form onSubmit={formik.handleSubmit}>
+            <StyledFormContainer>
+              <Input
+                label="User"
+                type="email"
+                name="email"
+                id="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Enter your email"
+              />
+              <StyledErrorContainer>
+                {formik.touched.email && formik.errors.email ? (
+                  <StyledErrorMessage>{formik.errors.email}</StyledErrorMessage>
+                ) : null}
+              </StyledErrorContainer>
+              <Input
+                label="Password"
+                type="password"
+                name="password"
+                id="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Enter your password"
+              />
+              <StyledErrorContainer>
+                {formik.touched.password && formik.errors.password ? (
+                  <StyledErrorMessage>{formik.errors.password}</StyledErrorMessage>
+                ) : null}
+              </StyledErrorContainer>
+              <StyledText>Forgot your password?</StyledText>
+              <div>
+                <Button type="submit" value={invalidCredentials ? 'Sign Up' : 'Login'} />
+              </div>
+            </StyledFormContainer>
+          </form>
+        </StyledLoginContainer>
+      </StyledMainContainer>
     </Layout>
   );
 };
