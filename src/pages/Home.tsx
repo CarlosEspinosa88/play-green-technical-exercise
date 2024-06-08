@@ -4,19 +4,19 @@ import Layout from '../components/Layout';
 import Card from '../components/Card';
 import DarkMode from '../components/DarkMode';
 import BottomMenuBar from '../components/BottomMenuBar';
-import { getAllSportsData } from '../helpers';
+import { getAllSportsData, storeFirestoreData } from '../helpers';
 import type { Sport, ColorScheme } from '../interfaces';
 import {
+  StyledText,
   StyledHomeContainer,
   StyledImageContainer,
   StyledTextContainer,
-  StyledText,
   StyledCardContainer,
 } from './styles/Home.styles';
 
 const match = {
-  right: 'like',
-  left: 'dislike',
+  right: 'likes',
+  left: 'dislikes',
 };
 
 const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
@@ -24,7 +24,12 @@ const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
   const [sports, setSports] = useState<Sport[]>([]);
 
   const handleSwipe = (direction, index) => {
-    console.log({ sportMatch: match[direction], sport: sports[index] });
+    const sportData = {
+      sportMatch: match[direction],
+      strSport: sports[index]?.strSport,
+      strSportThumb: sports[index]?.strSportThumb,
+    };
+    storeFirestoreData(sportData);
   };
 
   useEffect(() => {

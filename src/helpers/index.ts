@@ -1,7 +1,8 @@
-import { getAllSportsData } from './api';
-import { login } from './login';
-import { logout } from './logout';
-import { signup } from './signup';
-import { userStatus } from './status';
+import { getAllSportsData } from './api/api';
+import { login } from './firebase-auth/login';
+import { logout } from './firebase-auth/logout';
+import { signup } from './firebase-auth/signup';
+import { userStatus } from './firebase-auth/status';
+import { storeFirestoreData } from './firebase-store/store-data';
 
-export { getAllSportsData, login, logout, signup, userStatus };
+export { getAllSportsData, login, logout, signup, userStatus, storeFirestoreData };

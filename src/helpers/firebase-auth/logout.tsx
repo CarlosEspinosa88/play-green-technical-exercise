@@ -1,7 +1,7 @@
-import { auth } from '../config/firebase';
+import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import { userStatus } from './status';
-import type { FirebaseAuthType } from '../interfaces';
+import type { FirebaseAuthType } from '../../interfaces';
 
 export const logout = ({ isLogged, setIsLogged }: FirebaseAuthType) => {
   signOut(auth)
