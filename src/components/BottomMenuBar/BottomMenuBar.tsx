@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi';
 import { RiHomeFill, RiCompass4Fill } from 'react-icons/ri';
 import { useAuth } from '../../hooks/useAuth';
@@ -17,12 +17,16 @@ const BottomMenuBar = ({ $path }: { $path: string }) => {
   }
   return (
     <StyledBottomBarContainer>
-      <StyledMenuButton $path={$path === '/home'}>
-        <RiHomeFill size={20} />
-      </StyledMenuButton>
-      <StyledMenuButton $path={$path === '/fav'}>
-        <RiCompass4Fill size={20} />
-      </StyledMenuButton>
+      <Link to={'/home'}>
+        <StyledMenuButton $path={$path === '/home'}>
+          <RiHomeFill size={20} />
+        </StyledMenuButton>
+      </Link>
+      <Link to={'/history'}>
+        <StyledMenuButton $path={$path === '/history'}>
+          <RiCompass4Fill size={20} />
+        </StyledMenuButton>
+      </Link>
       <StyledMenuButton onClick={handleLogout} $path={$path === '/logout'}>
         <FiLogOut size={20} />
       </StyledMenuButton>

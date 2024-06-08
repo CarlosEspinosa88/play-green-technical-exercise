@@ -9,6 +9,8 @@ const lightTheme = {
   box: white,
   background: '#F3F3F3',
   remove: '#D36060',
+  iconHeart: '#1A5BE1',
+  selectedNav: '#1A5BE1',
 };
 
 const darktheme = {
@@ -16,9 +18,11 @@ const darktheme = {
   subtitle: lightGrey,
   text: lightGrey,
   label: lightGrey,
-  box: 'rgba(142, 142, 142, 0.2)',
+  box: '#35354a',
   background: '#181828',
   remove: white,
+  iconHeart: white,
+  selectedNav: white,
 };
 
 const defaultStyles = {
