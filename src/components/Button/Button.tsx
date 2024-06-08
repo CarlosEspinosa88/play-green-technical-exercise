@@ -1,5 +1,5 @@
 import { ButtonStyled } from './Button.styles';
-import { ButtonType } from '../../interfaces';
+import type { ButtonType } from '../../interfaces';
 
 const Button = ({ type, value }: ButtonType) => {
   return (

@@ -5,22 +5,27 @@ export const StyledHomeContainer = styled.div`
   flex-direction: column;
 `;
 
+export const StyledCardContainer = styled.div`
+  height: 70vh;
+`;
+
 export const StyledImageContainer = styled.div<{ $src?: string }>`
   ${(props) => `
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url(${props.$src});
-    border-bottom-right-radius: ${props.theme.borderRadius.extra};
-    border-bottom-left-radius: ${props.theme.borderRadius.extra};
+    border-radius: ${props.theme.borderRadius.large};
     background-color: ${props.theme.otherColors.gray};
   `};
+  width: 300px;
   height: 60vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
 `;
 
 export const StyledTextContainer = styled.div`
-  position: relative;
-  bottom: 67px;
+  position: absolute;
+  bottom: 0;
   left: 16px;
   color: ${({ theme }) => theme.otherColors.white};
 `;

@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import type { ColorScheme } from '../interfaces';
 import Home from '../pages/Home';
 import Fav from '../pages/Fav';
 import Login from '../pages/Login';
+import type { ColorScheme } from '../interfaces';
 
 export const InitRoute = ({ colorScheme, setColorScheme }: ColorScheme) => {
   return (

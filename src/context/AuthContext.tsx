@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, ReactNode } from 'react';
 import { login, logout, signup, userStatus } from '../helpers';
-import { UserAuth, ValueUserType } from '../interfaces';
+import type { UserAuth, ValueUserType } from '../interfaces';
 
 export const AuthContext = createContext<UserAuth | null>(null);
 

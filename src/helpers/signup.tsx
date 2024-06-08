@@ -1,7 +1,7 @@
 import { auth } from '../config/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { userStatus } from './status';
-import { FirebaseAuthType } from '../interfaces';
+import type { FirebaseAuthType } from '../interfaces';
 
 export const signup = ({ isLogged, setIsLogged, setIsLoggedError, email, password }: FirebaseAuthType) => {
   createUserWithEmailAndPassword(auth, email, password)
