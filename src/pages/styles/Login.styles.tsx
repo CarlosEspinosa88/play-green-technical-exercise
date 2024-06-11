@@ -43,7 +43,10 @@ export const StyledHeaderThree = styled.p`
   font-family: 'Epilogue', sans-serif;
 `;
 
-export const StyledText = styled.p`
+export const StyledSignUpButton = styled.p`
+  cursor: pointer;
+  border: 0;
+  margin: 0;
   font-weight: 200;
   font-size: 0.8rem;
   color: ${({ theme }) => theme.colors.text};
