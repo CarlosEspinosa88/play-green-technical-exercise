@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { InitRoute } from './routes';
 import { GlobalStyles, theme } from './styles';
-import type { ColorScheme } from './interfaces';
+import type { ColorScheme } from './interfaces'; 
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
