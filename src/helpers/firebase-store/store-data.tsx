@@ -12,6 +12,6 @@ export const storeFirestoreData = async (userId, sportData) => {
       await setDoc(sportRef, { sports: arrayUnion(sportData) });
     }
   } catch (error) {
-    console.error('Error storing sport data', error);
+    console.log('Error storing sport data', error);
   }
 };
