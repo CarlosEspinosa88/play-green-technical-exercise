@@ -6,7 +6,7 @@ import type { FirebaseAuthType } from '../../interfaces';
 export const logout = ({ isLogged, setIsLogged }: FirebaseAuthType) => {
   signOut(auth)
     .then(() => {
-      isLogged && userStatus(setIsLogged);
+      isLogged && userStatus({ setIsLogged });
       console.log('User logout successfully');
     })
     .catch((error) => {

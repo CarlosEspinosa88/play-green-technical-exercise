@@ -5,7 +5,7 @@ import Card from '../components/Card';
 import DarkMode from '../components/DarkMode';
 import BottomMenuBar from '../components/BottomMenuBar';
 import { getAllSportsData, storeFirestoreData } from '../helpers';
-import type { Sport, ColorScheme } from '../interfaces';
+import { useAuth } from '../hooks/useAuth';
 import {
   StyledText,
   StyledHomeContainer,
@@ -13,6 +13,7 @@ import {
   StyledTextContainer,
   StyledCardContainer,
 } from './styles/Home.styles';
+import type { Sport, ColorScheme } from '../interfaces';
 
 const match = {
   right: 'likes',
@@ -21,21 +22,24 @@ const match = {
 
 const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
   const { pathname } = useLocation();
+  const auth = useAuth();
   const [sports, setSports] = useState<Sport[]>([]);
 
   const handleSwipe = (direction, index) => {
     const sportData = {
+      idSport: sports[index]?.idSport,
       sportMatch: match[direction],
       strSport: sports[index]?.strSport,
       strSportThumb: sports[index]?.strSportThumb,
     };
-    storeFirestoreData(sportData);
+
+    storeFirestoreData(auth?.user?.id, sportData);
   };
 
   useEffect(() => {
     async function handleAllSports() {
       const getData = await getAllSportsData();
-      setSports(getData.sports);
+      setSports(getData?.sports);
     }
 
     handleAllSports();

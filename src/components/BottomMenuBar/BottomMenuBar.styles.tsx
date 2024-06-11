@@ -1,6 +1,9 @@
 import { styled } from 'styled-components';
 
 export const StyledBottomBarContainer = styled.div`
+  position: fixed;
+  bottom: 68px;
+  width: 248px;
   background-color: ${({ theme }) => theme.colors.box};
   display: flex;
   justify-content: space-between;
@@ -23,7 +26,7 @@ export const StyledMenuButton = styled.button<{ $path?: boolean }>`
   align-items: center;
 
   ${(props) => `
-    color: ${props.theme.colors.text};
+    color: ${props.$path ? props.theme.colors.selectedNav : props.theme.otherColors.gray};
     background-color: ${props.$path ? props.theme.colors.background : 'transparent'};
   `};
 

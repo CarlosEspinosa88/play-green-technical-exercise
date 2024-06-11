@@ -1,8 +1,20 @@
-import type { Sport } from './sportInterfaces';
+import type { Sport, SportHistoryType } from './sportInterfaces';
 import type { ColorScheme } from './colorSchemeInterface';
-import type { UserAuth, ValueUserType, FirebaseAuthType } from './userInterface';
+import type { User, UserAuth, ValueUserType, FirebaseAuthType, UserStatus } from './userInterface';
 import type { InputType } from './inputInterface';
 import type { ButtonType } from './buttonInterface';
 import type { CardType } from './cardInterface';
 
-export type { Sport, ColorScheme, UserAuth, InputType, ButtonType, ValueUserType, FirebaseAuthType, CardType };
+export type {
+  Sport,
+  SportHistoryType,
+  ColorScheme,
+  User,
+  UserAuth,
+  InputType,
+  ButtonType,
+  ValueUserType,
+  FirebaseAuthType,
+  CardType,
+  UserStatus,
+};

@@ -1,11 +1,17 @@
 import { db } from '../../config/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { doc, updateDoc, arrayUnion, setDoc, getDoc } from 'firebase/firestore';
 
-export const storeFirestoreData = async (sportData) => {
+export const storeFirestoreData = async (userId, sportData) => {
   try {
-    const docRef = await addDoc(collection(db, 'sports'), sportData);
-    console.log('Document written with ID: ', docRef.id);
-  } catch (e) {
-    console.error('Error adding document: ', e);
+    const sportRef = doc(db, 'sports', userId);
+    const sportDoc = await getDoc(sportRef);
+
+    if (sportDoc.exists()) {
+      await updateDoc(sportRef, { sports: arrayUnion(sportData) });
+    } else {
+      await setDoc(sportRef, { sports: arrayUnion(sportData) });
+    }
+  } catch (error) {
+    console.error('Error storing sport data', error);
   }
 };

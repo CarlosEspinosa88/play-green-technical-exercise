@@ -29,6 +29,7 @@ export const StyledTextContainer = styled.div`
   left: 16px;
   color: ${({ theme }) => theme.otherColors.white};
 `;
+
 export const StyledText = styled.p`
   font-weight: bold;
   font-size: 1.5rem;
