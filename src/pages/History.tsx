@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import Layout from '../components/Layout';
 import BottomMenuBar from '../components/BottomMenuBar';
@@ -17,7 +17,6 @@ import type { SportHistoryType } from '../interfaces';
 
 const History = () => {
   const auth = useAuth();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const [historySports, setHistorySports] = useState([]);
 
@@ -27,17 +26,9 @@ const History = () => {
     }
   }, [auth?.user?.id, auth?.isLogged]);
 
-  useEffect(() => {
-    const userTimeout = setTimeout(() => {
-      !auth?.isLogged && navigate('/');
-    }, 100);
-
-    return () => clearTimeout(userTimeout);
-  }, [auth?.isLogged, navigate]);
-
   return (
     <Layout>
-      <Link to={'/home'}>
+      <Link to={'/'}>
         <StyledIconContainer>
           <IoArrowBack size={25} />
         </StyledIconContainer>

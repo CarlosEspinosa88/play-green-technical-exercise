@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { FiX } from 'react-icons/fi';
 import Layout from '../components/Layout';
@@ -27,7 +27,6 @@ const match = {
 
 const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
   const auth = useAuth();
   const [sports, setSports] = useState<Sport[]>([]);
 
@@ -50,14 +49,6 @@ const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
 
     handleAllSports();
   }, []);
-
-  useEffect(() => {
-    const userTimeout = setTimeout(() => {
-      !auth?.isLogged && navigate('/');
-    }, 100);
-
-    return () => clearTimeout(userTimeout);
-  }, [auth?.isLogged, navigate]);
 
   return (
     <Layout>
