@@ -27,7 +27,7 @@ const BottomMenuBar = ({ $path }: { $path: string }) => {
           <RiCompass4Fill size={20} />
         </StyledMenuButton>
       </Link>
-      <StyledMenuButton onClick={handleLogout} $path={$path === '/logout'}>
+      <StyledMenuButton onClick={handleLogout}>
         <FiLogOut size={20} />
       </StyledMenuButton>
     </StyledBottomBarContainer>
