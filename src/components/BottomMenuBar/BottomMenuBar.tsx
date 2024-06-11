@@ -12,13 +12,13 @@ const BottomMenuBar = ({ $path }: { $path: string }) => {
   function handleLogout() {
     auth?.logoutUser();
     setTimeout(() => {
-      navigate('/');
+      navigate('/login');
     }, 100);
   }
   return (
     <StyledBottomBarContainer>
-      <Link to={'/home'}>
-        <StyledMenuButton $path={$path === '/home'}>
+      <Link to={'/'}>
+        <StyledMenuButton $path={$path === '/'}>
           <RiHomeFill size={20} />
         </StyledMenuButton>
       </Link>

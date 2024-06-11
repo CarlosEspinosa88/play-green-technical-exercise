@@ -1,5 +1,4 @@
 import * as Yup from 'yup';
-
 import { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +39,7 @@ const Login = () => {
 
   useEffect(() => {
     const userTimeout = setTimeout(() => {
-      auth?.isLogged && navigate('/home');
+      auth?.isLogged && navigate('/');
     }, 100);
 
     return () => clearTimeout(userTimeout);
