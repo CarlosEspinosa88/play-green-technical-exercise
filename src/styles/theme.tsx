@@ -47,6 +47,7 @@ const defaultStyles = {
     shadowBlue: '#063BA8',
     blueContainer: '#2269FBCC',
     blueShadowPrimary: 'rgba(26, 92, 225, 0.55)',
+    grayShadow: 'rgba(106, 106, 107, 0.25)',
     gray: '#8c8c8c',
     white: white,
   },

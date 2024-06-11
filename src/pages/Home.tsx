@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { BsFillHeartFill } from 'react-icons/bs';
+import { FiX } from 'react-icons/fi';
 import Layout from '../components/Layout';
 import Card from '../components/Card';
 import DarkMode from '../components/DarkMode';
@@ -12,6 +14,9 @@ import {
   StyledImageContainer,
   StyledTextContainer,
   StyledCardContainer,
+  StyledIconHeartContainer,
+  StyledIconDislikeContainer,
+  StyledIconsContainer,
 } from './styles/Home.styles';
 import type { Sport, ColorScheme } from '../interfaces';
 
@@ -61,6 +66,14 @@ const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
           ))}
         </StyledCardContainer>
       </StyledHomeContainer>
+      <StyledIconsContainer>
+        <StyledIconDislikeContainer>
+          <FiX size={25} />
+        </StyledIconDislikeContainer>
+        <StyledIconHeartContainer>
+          <BsFillHeartFill size={28} />
+        </StyledIconHeartContainer>
+      </StyledIconsContainer>
       <BottomMenuBar $path={pathname} />
     </Layout>
   );

@@ -6,7 +6,7 @@ export const StyledHomeContainer = styled.div`
 `;
 
 export const StyledCardContainer = styled.div`
-  height: 70vh;
+  height: 60vh;
 `;
 
 export const StyledImageContainer = styled.div<{ $src?: string }>`
@@ -45,4 +45,36 @@ export const StyledBottomBarContainer = styled.div`
   margin: 17px;
   align-items: center;
   padding: 5px 25px;
+`;
+
+export const StyledIconsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+`;
+
+export const StyledIconHeartContainer = styled.div`
+  background: ${({ theme }) =>
+    `linear-gradient(90deg, ${theme.otherColors.iconBlue} 0%, ${theme.otherColors.primary} 100%)`};
+  color: ${({ theme }) => theme.otherColors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  display: flex;
+  padding: 15px;
+  margin-left: 20px;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+`;
+
+export const StyledIconDislikeContainer = styled.div`
+  color: ${({ theme }) => theme.colors.remove};
+  background: ${({ theme }) => theme.colors.box};
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  display: flex;
+  padding: 7px;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  box-shadow: ${({ theme }) => `2px 1px 11px 4px ${theme.otherColors.grayShadow}`};
 `;
