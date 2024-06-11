@@ -1,16 +1,18 @@
 const lightGrey: string = '#FEFEFE';
 const white: string = '#FFFFFF';
+const darkBlueSecondary: string = '#161617'
+const lightBluePrimary: string = '#1A5BE1'
 
 const lightTheme = {
-  header: '#161617',
+  header: darkBlueSecondary,
   subtitle: '#232232',
-  text: '#161617',
+  text: darkBlueSecondary,
   label: '#3C3C3C',
   box: white,
   background: '#F3F3F3',
   remove: '#D36060',
-  iconHeart: '#1A5BE1',
-  selectedNav: '#1A5BE1',
+  iconHeart: lightBluePrimary,
+  selectedNav: lightBluePrimary,
 };
 
 const darktheme = {
@@ -40,15 +42,15 @@ const defaultStyles = {
     circle: '50%',
   },
   otherColors: {
-    primary: '#1A5BE1',
-    secondary: '#161617',
+    primary: lightBluePrimary,
+    secondary: darkBlueSecondary,
     error: '#EA596F',
     iconBlue: '#236BFE',
     shadowBlue: '#063BA8',
     blueContainer: '#2269FBCC',
     blueShadowPrimary: 'rgba(26, 92, 225, 0.55)',
     grayShadow: 'rgba(106, 106, 107, 0.25)',
-    gray: '#8c8c8c',
+    gray: '#8C8C8C',
     white: white,
   },
 };
