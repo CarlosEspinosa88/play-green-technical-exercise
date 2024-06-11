@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -14,14 +14,15 @@ import {
   StyledFormContainer,
   StyledErrorContainer,
   StyledErrorMessage,
-  StyledText,
+  StyledSignUpButton,
   StyledCredentialContainer,
 } from './styles/Login.styles';
 
 const Login = () => {
   const navigate = useNavigate();
   const auth = useAuth();
-  const invalidCredentials = auth?.isLoggedError?.includes('invalid-credential');
+  const [signUpUser, setSignUpUser] =useState(false)
+  const [errorSingIn, setErrorSingIn] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -33,9 +34,15 @@ const Login = () => {
       password: Yup.string().required('Password is required').min(6, 'The password must be 6 characters'),
     }),
     onSubmit: (values) => {
-      invalidCredentials ? auth?.signupUser(values) : auth?.loginUser(values);
+      setErrorSingIn(false)
+      signUpUser ? auth?.signupUser(values) : auth?.loginUser(values);
     },
   });
+
+  function handleSignUp() {
+    setErrorSingIn(false)
+    signUpUser ? setSignUpUser(false) : setSignUpUser(true)
+  }
 
   useEffect(() => {
     const userTimeout = setTimeout(() => {
@@ -45,15 +52,22 @@ const Login = () => {
     return () => clearTimeout(userTimeout);
   }, [auth?.isLogged, navigate]);
 
+  useEffect(() => {
+    if (auth?.isLoggedError?.includes('invalid-credential')) {
+      setErrorSingIn(true)
+    }
+  }, [auth?.isLoggedError])
+
   return (
     <Layout>
       <StyledMainContainer>
         <StyledLoginContainer>
-          <StyledHeaderOne>Welcome</StyledHeaderOne>
+          <StyledHeaderOne>{signUpUser ? 'Sign Up' : 'Welcome'}</StyledHeaderOne>
           <StyledHeaderThree>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledHeaderThree>
-          {invalidCredentials && (
+          {errorSingIn && (
             <StyledCredentialContainer>
-              <StyledErrorMessage>Error authentication or invalid credential</StyledErrorMessage>
+              <StyledErrorMessage>Error authentication or invalid credential{" "}</StyledErrorMessage>
+              <StyledErrorMessage>You should sign up, please</StyledErrorMessage>
             </StyledCredentialContainer>
           )}
           <form onSubmit={formik.handleSubmit}>
@@ -88,9 +102,9 @@ const Login = () => {
                   <StyledErrorMessage>{formik.errors.password}</StyledErrorMessage>
                 ) : null}
               </StyledErrorContainer>
-              <StyledText>Forgot your password?</StyledText>
+              <StyledSignUpButton onClick={handleSignUp}>{signUpUser ?  'Login?' :'Sign Up?'  }</StyledSignUpButton>
               <div>
-                <Button type="submit" value={invalidCredentials ? 'Sign Up' : 'Login'} />
+                <Button type="submit" value={signUpUser ? 'Sign Up' : 'Login'} />
               </div>
             </StyledFormContainer>
           </form>
