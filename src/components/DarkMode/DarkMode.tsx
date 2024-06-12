@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledDarkModeContainer, StyledDarkModeButton } from './DarkMode.styles';
 import type { ColorScheme } from '../../interfaces';
 

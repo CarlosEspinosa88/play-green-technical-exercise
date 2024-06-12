@@ -21,8 +21,8 @@ import {
 const Login = () => {
   const navigate = useNavigate();
   const auth = useAuth();
-  const [signUpUser, setSignUpUser] =useState(false)
-  const [errorSingIn, setErrorSingIn] = useState(false)
+  const [signUpUser, setSignUpUser] = useState(false);
+  const [errorSingIn, setErrorSingIn] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -34,14 +34,14 @@ const Login = () => {
       password: Yup.string().required('Password is required').min(6, 'The password must be 6 characters'),
     }),
     onSubmit: (values) => {
-      setErrorSingIn(false)
+      setErrorSingIn(false);
       signUpUser ? auth?.signupUser(values) : auth?.loginUser(values);
     },
   });
 
   function handleSignUp() {
-    setErrorSingIn(false)
-    signUpUser ? setSignUpUser(false) : setSignUpUser(true)
+    setErrorSingIn(false);
+    signUpUser ? setSignUpUser(false) : setSignUpUser(true);
   }
 
   useEffect(() => {
@@ -54,9 +54,9 @@ const Login = () => {
 
   useEffect(() => {
     if (auth?.isLoggedError?.includes('invalid-credential')) {
-      setErrorSingIn(true)
+      setErrorSingIn(true);
     }
-  }, [auth?.isLoggedError])
+  }, [auth?.isLoggedError]);
 
   return (
     <Layout>
@@ -66,7 +66,7 @@ const Login = () => {
           <StyledHeaderThree>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledHeaderThree>
           {errorSingIn && (
             <StyledCredentialContainer>
-              <StyledErrorMessage>Error authentication or invalid credential{" "}</StyledErrorMessage>
+              <StyledErrorMessage>Error authentication or invalid credential </StyledErrorMessage>
               <StyledErrorMessage>You should sign up, please</StyledErrorMessage>
             </StyledCredentialContainer>
           )}
@@ -102,7 +102,7 @@ const Login = () => {
                   <StyledErrorMessage>{formik.errors.password}</StyledErrorMessage>
                 ) : null}
               </StyledErrorContainer>
-              <StyledSignUpButton onClick={handleSignUp}>{signUpUser ?  'Login?' :'Sign Up?'  }</StyledSignUpButton>
+              <StyledSignUpButton onClick={handleSignUp}>{signUpUser ? 'Login?' : 'Sign Up?'}</StyledSignUpButton>
               <div>
                 <Button type="submit" value={signUpUser ? 'Sign Up' : 'Login'} />
               </div>

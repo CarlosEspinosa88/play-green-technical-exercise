@@ -18,9 +18,9 @@ import {
   StyledIconDislikeContainer,
   StyledIconsContainer,
 } from './styles/Home.styles';
-import type { Sport, ColorScheme } from '../interfaces';
+import type { Sport, ColorScheme, SportValuesType, Match } from '../interfaces';
 
-const match = {
+const match: Match = {
   right: 'likes',
   left: 'dislikes',
 };
@@ -28,17 +28,20 @@ const match = {
 const Home = ({ colorScheme, setColorScheme }: ColorScheme) => {
   const { pathname } = useLocation();
   const auth = useAuth();
+  const user = auth?.user;
+  const id = user?.id;
+
   const [sports, setSports] = useState<Sport[]>([]);
 
-  const handleSwipe = (direction, index) => {
-    const sportData = {
+  const handleSwipe = (direction: string, index: number) => {
+    const sportData: SportValuesType = {
       idSport: sports[index]?.idSport,
       sportMatch: match[direction],
       strSport: sports[index]?.strSport,
       strSportThumb: sports[index]?.strSportThumb,
     };
 
-    storeFirestoreData(auth?.user?.id, sportData);
+    id && storeFirestoreData({ userId: id, sportData });
   };
 
   useEffect(() => {

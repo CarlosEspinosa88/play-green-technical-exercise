@@ -1,4 +1,3 @@
-import React from 'react';
 import type { InputType } from '../../interfaces';
 import { StyledInputContainer, StyledLabelWrapper, StyledLabel, StyledInput, StyledInputWrapper } from './Input.styles';
 

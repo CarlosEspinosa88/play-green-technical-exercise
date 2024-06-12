@@ -13,18 +13,18 @@ import {
   StyledCardsContainer,
   StyledHeaderDescription,
 } from './styles/History.styles';
-import type { SportHistoryType } from '../interfaces';
+import type { SportValuesType } from '../interfaces';
 
 const History = () => {
   const auth = useAuth();
   const { pathname } = useLocation();
-  const [historySports, setHistorySports] = useState([]);
+  const [historySports, setHistorySports] = useState<SportValuesType[]>([]);
 
   useEffect(() => {
     if (auth?.isLogged) {
-      readFirestoreData(auth?.user?.id, setHistorySports);
+      readFirestoreData({ userId: auth?.user.id, setHistorySports });
     }
-  }, [auth?.user?.id, auth?.isLogged]);
+  }, [auth?.user.id, auth?.isLogged]);
 
   return (
     <Layout>
@@ -37,9 +37,7 @@ const History = () => {
         <StyledCardsContainer>
           <StyledHeaderTwo>History</StyledHeaderTwo>
           <StyledHeaderDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</StyledHeaderDescription>
-          {historySports?.map((sport: SportHistoryType, index) => (
-            <HistoryCard key={`${sport.idSport}-${index}`} sport={sport} />
-          ))}
+          {historySports?.map((sport, index) => <HistoryCard key={`${sport.idSport}-${index}`} sport={sport} />)}
         </StyledCardsContainer>
       </StyledHistoryContainer>
       <BottomMenuBar $path={pathname} />

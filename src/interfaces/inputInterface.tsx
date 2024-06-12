@@ -1,3 +1,6 @@
+import { FocusEvent, ChangeEvent } from 'react';
+
+/* eslint-disable no-unused-vars */
 export type InputType = {
   label: string;
   type: string;
@@ -5,6 +8,6 @@ export type InputType = {
   id: string;
   placeholder: string;
   value: string;
-  onChange: (_: HTMLInputElement) => void;
-  onBlur: (_: HTMLInputElement) => void;
+  onChange: (e: string | ChangeEvent<Element>) => void;
+  onBlur: (e: string | FocusEvent<Element>) => void;
 };
