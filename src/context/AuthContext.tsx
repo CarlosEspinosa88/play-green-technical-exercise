@@ -5,27 +5,27 @@ import type { UserAuth, ValueUserType, User } from '../interfaces';
 export const AuthContext = createContext<UserAuth | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User>({});
-  const [isLogged, setIsLogged] = useState(false);
-  const [isLoggedError, setIsLoggedError] = useState(null);
+  const [user, setUser] = useState<User>({ id: '', email: '' });
+  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isLoggedError, setIsLoggedError] = useState<string | null>(null);
 
   function loginUser(values: ValueUserType) {
-    login({ isLogged, setIsLogged, setIsLoggedError, setUser, email: values.email, password: values.password });
+    login({ isLogged, email: values.email, password: values.password, setIsLogged, setIsLoggedError, setUser });
   }
 
   function logoutUser() {
-    logout({ isLogged, setIsLogged });
+    logout({ isLogged, setUser, setIsLogged, setIsLoggedError });
   }
 
   function signupUser(values: ValueUserType) {
-    signup({ isLogged, setIsLogged, setIsLoggedError, setUser, email: values.email, password: values.password });
+    signup({ isLogged, email: values.email, password: values.password, setIsLogged, setIsLoggedError, setUser });
   }
 
   useEffect(() => {
     userStatus({ setIsLogged, setUser });
   }, []);
 
-  const value = {
+  const value: UserAuth = {
     user,
     isLogged,
     isLoggedError,

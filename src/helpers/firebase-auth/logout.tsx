@@ -1,16 +1,16 @@
 import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import { userStatus } from './status';
-import type { FirebaseAuthType } from '../../interfaces';
+import type { UserLogout } from '../../interfaces';
 
-export const logout = ({ isLogged, setIsLogged }: FirebaseAuthType) => {
+export const logout = ({ isLogged, setUser, setIsLogged, setIsLoggedError }: UserLogout) => {
   signOut(auth)
     .then(() => {
-      isLogged && userStatus({ setIsLogged });
+      isLogged && userStatus({ setIsLogged, setUser });
       console.log('User logout successfully');
     })
     .catch((error) => {
       console.log(`${error.message}, code: ${error.code}`);
-      setError(error.message);
+      setIsLoggedError(error.message);
     });
 };

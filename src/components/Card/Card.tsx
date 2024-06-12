@@ -1,10 +1,10 @@
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, PanInfo } from 'framer-motion';
 import type { CardType } from '../../interfaces';
 
 const Card = ({ children, index, onSwipe }: CardType) => {
   const controls = useAnimation();
 
-  const handleDragEnd = (event, info) => {
+  const handleDragEnd = (_: MouseEvent, info: PanInfo) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
 

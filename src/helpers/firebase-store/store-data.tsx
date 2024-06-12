@@ -1,9 +1,13 @@
 import { db } from '../../config/firebase';
 import { doc, updateDoc, arrayUnion, setDoc, getDoc } from 'firebase/firestore';
+import type { StoreFiretoreType } from '../../interfaces';
 
-export const storeFirestoreData = async (userId, sportData) => {
+
+export const storeFirestoreData = async ({ userId, sportData }: StoreFiretoreType) => {
+  const path = 'sports'
+  const sportRef = doc(db, path, userId);
+  
   try {
-    const sportRef = doc(db, 'sports', userId);
     const sportDoc = await getDoc(sportRef);
 
     if (sportDoc.exists()) {

@@ -2,16 +2,14 @@
 
 export type User = {
   id: string;
-  email: string;
+  email: string | null;
 };
 
-export type UserAuth = {
-  user: User;
+export type UserLogout = {
   isLogged: boolean;
-  isLoggedError: string;
-  loginUser: (isLogged: boolean, setIsLogged: () => void) => void;
-  logoutUser: (isLogged: boolean, setIsLogged: () => void) => void;
-  signupUser: (setIsLogged: () => void) => void;
+  setUser: ({ id, email }: User) => void;
+  setIsLogged: (bool: boolean) => void;
+  setIsLoggedError: (error: string) => void;
 };
 
 export type ValueUserType = {
@@ -19,13 +17,22 @@ export type ValueUserType = {
   password: string;
 };
 
+export type UserAuth = {
+  user: User;
+  isLogged: boolean;
+  isLoggedError: string | null;
+  loginUser: ({ email, password }: ValueUserType) => void;
+  logoutUser: () => void;
+  signupUser: ({ email, password }: ValueUserType) => void;
+};
+
 export type FirebaseAuthType = {
   isLogged: boolean;
-  setIsLogged: () => void;
-  setIsLoggedError: () => void;
+  email: string;
+  password: string;
+  setIsLogged: (bool: boolean) => void;
+  setIsLoggedError: (error: string) => void;
   setUser: ({ id, email }: User) => void;
-  email?: string;
-  password?: string;
 };
 
 export type UserStatus = {

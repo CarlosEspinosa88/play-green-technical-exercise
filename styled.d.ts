@@ -1,7 +1,8 @@
 import 'styled-components';
+import { Themes } from './src/interfaces';
 
 declare module 'styled-components' {
-  export interface DefaultTheme {
+  export interface DefaultTheme extends Themes {
     light: {
       colors: {
         header: string;

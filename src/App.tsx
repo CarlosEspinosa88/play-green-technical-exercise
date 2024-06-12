@@ -4,13 +4,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { InitRoute } from './routes';
 import { GlobalStyles, theme } from './styles';
-import type { ColorScheme } from './interfaces';
+import type { ThemeKeys } from './interfaces';
 
 function App() {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  const [colorScheme, setColorScheme] = useState<ThemeKeys>('light');
+  const currentTheme = theme[colorScheme];
 
   return (
-    <ThemeProvider theme={theme[colorScheme]}>
+    <ThemeProvider theme={currentTheme}>
       <BrowserRouter>
         <AuthProvider>
           <GlobalStyles />

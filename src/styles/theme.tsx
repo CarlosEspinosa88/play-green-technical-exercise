@@ -1,3 +1,5 @@
+import type { Themes } from '../interfaces';
+
 const lightGrey: string = '#FEFEFE';
 const white: string = '#FFFFFF';
 
@@ -53,7 +55,7 @@ const defaultStyles = {
   },
 };
 
-export const theme = {
+export const theme: Themes = {
   light: {
     colors: lightTheme,
     ...defaultStyles,

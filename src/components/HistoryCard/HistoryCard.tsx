@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { FiX } from 'react-icons/fi';
 import {
@@ -8,7 +7,7 @@ import {
   StyledText,
   StyledIcon,
 } from './HistoryCard.styles';
-import type { SportHistoryType } from '../interfaces';
+import type { SportHistoryType } from '../../interfaces';
 
 const HistoryCard = ({ sport }: SportHistoryType) => {
   return (
