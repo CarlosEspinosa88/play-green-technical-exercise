@@ -5,12 +5,15 @@ declare module 'styled-components' {
   export interface DefaultTheme extends Themes {
     light: {
       colors: {
-        header: string;
-        subtitle: string;
-        text: string;
-        label: string;
-        background: string;
-        remove: string;
+        header: string,
+        subtitle: string,
+        text: string,
+        label: string,
+        box: string,
+        background: string,
+        remove: string,
+        iconHeart: string,
+        selectedNav: string,
       };
       fontSize: {
         xs: string;
@@ -22,6 +25,7 @@ declare module 'styled-components' {
         small: string;
         medium: string;
         large: string;
+        extra: string;
         circle: string;
       };
       otherColors: {
@@ -35,12 +39,15 @@ declare module 'styled-components' {
     };
     dark: {
       colors: {
-        header: string;
-        subtitle: string;
-        text: string;
-        label: string;
-        background: string;
-        remove: string;
+        header: string,
+        subtitle: string,
+        text: string,
+        label: string,
+        box: string,
+        background: string,
+        remove: string,
+        iconHeart: string,
+        selectedNav: string,
       };
       fontSize: {
         xs: string;
@@ -52,14 +59,20 @@ declare module 'styled-components' {
         small: string;
         medium: string;
         large: string;
+        extra: string;
         circle: string;
       };
       otherColors: {
-        error: string;
-        blue: string;
-        blueOne: string;
-        blueSecond: string;
-        blueContainer: string;
+        primary: string,
+        secondary: string,
+        error: string,
+        iconBlue: string,
+        shadowBlue: string,
+        blueContainer: string,
+        blueShadowPrimary: string,
+        grayShadow: string,
+        gray: string,
+        white: string,
       };
     };
   }
