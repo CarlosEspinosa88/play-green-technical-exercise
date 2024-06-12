@@ -2,12 +2,15 @@ export type ThemeKeys = 'light' | 'dark';
 
 type Theme = {
   colors: {
-    header: string;
-    subtitle: string;
-    text: string;
-    label: string;
-    background: string;
-    remove: string;
+    header: string,
+    subtitle: string,
+    text: string,
+    label: string,
+    box: string,
+    background: string,
+    remove: string,
+    iconHeart: string,
+    selectedNav: string,
   };
   fontSize: {
     xs: string;
@@ -19,6 +22,7 @@ type Theme = {
     small: string;
     medium: string;
     large: string;
+    extra: string;
     circle: string;
   };
   otherColors: {
